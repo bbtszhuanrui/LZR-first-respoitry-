@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box {
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #tu {
+            width: 550px;
+            height: 350px;
+            border: blue solid 1px;
+            background-image: url(../images/1.webp);
+            background-repeat: no-repeat;
+            background-size: 550px 350px;
+
+            /* overflow: hidden; */
+        }
+
+        ul {
+            width: 400px;
+            height: 100px;
+            display: flex;
+
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #btn1,
+        #btn2,
+        #btn3 {
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+        <div id="tu">
+
+        </div>
+
+        <ul>
+            <li class="li"><a href=""><img src="../images/1.webp" alt=""></a></li>
+            <li><a href=""><img src="../images/2.webp" alt="" id="ig"></a></li>
+            <li><a href=""><img src="../images/3.webp" alt=""></a></li>
+            <li><a href=""><img src="../images/4.webp" alt=""></a></li>
+        </ul>
+
+        <button id="btn1">随机更换背景</button>
+        <button id="btn2">开选</button>
+        <button id="btn3">重选</button>
+    </div>
+
+    <script>
+        var arr = [
+            "../images/1.webp",
+            "../images/2.webp",
+            "../images/3.webp",
+            "../images/4.webp"
+        ]
+        var arr2 = [
+            "../images/11.webp",
+            "../images/12.webp",
+            "../images/13.webp",
+            "../images/14.webp"
+        ]
+
+
+        var tu = document.getElementById("tu")
+        // var box = document.getElementById("box")
+        // var btn1 = document.getElementById("btn1")
+        // var btn2 = document.querySelectorAll("#btn2")
+        // var btn3 = document.querySelectorAll("#btn3")
+        var img = document.getElementById("ig")
+
+
+        img.style = "border:1px solid red"
+
+        btn1.onclick = fn1
+
+        function fn1(arr) {
+            var Iindex = parseInt(Math.random() * arr.length)
+            var str = arr[Iindex]
+            return tu.style = `background: url(${str}) 0% 0% / 100% 100% no-repeat;`
+
+        }
+
+
+
+        var timer = undefined
+        btn2.onclick = function () {
+
+            if (!timer) {
+                timer = setInterval(
+                    function () {
+                        fn1(arr)
+                    }, 100
+
+                )
+                btn2.innerText = "停"
+
+            } else {
+                clearInterval(timer)
+                // var Iindex = parseInt(Math.random() * arr2.length)
+                // var str2 = arr2[Iindex]
+                // tu.style = `background: url(${str2}) 0% 0% / 100% 100% no-repeat;`
+                fn1(arr2)
+
+                timer = undefined
+                btn2.innerText = "你老婆"
+            }
+
+
+        }
+
+        btn3.onclick = function () {
+            // var Iindex = parseInt(Math.random() * arr.length)
+            // var str = arr[Iindex]
+
+            // tu.style = `background: url(${str}) 0% 0% / 100% 100% no-repeat;`
+            fn1(arr)
+            btn2.innerText = "再选"
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

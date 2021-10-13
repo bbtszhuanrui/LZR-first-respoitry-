@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./move_tool.js"></script> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /* box-sizing: border-box; */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #banner {
+            width: 400px;
+            height: 300px;
+            border: black solid 1px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .clearFix::after,
+        .clearFix::before {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .boxImg {
+            width: 500%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .boxImg>li {
+            width: 400px;
+            height: 100%;
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+
+        }
+
+        .boxImg>li:nth-child(1) {
+            background-color: blueviolet;
+        }
+
+        .boxImg>li:nth-child(2) {
+            background-color: red;
+        }
+
+        .boxImg>li:nth-child(3) {
+            background-color: blue;
+        }
+
+        .boxImg>li:nth-child(4) {
+            background-color: yellow;
+        }
+
+        .boxImg>li:nth-child(5) {
+            background-color: green;
+        }
+
+        /* #btn {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+        } */
+
+        #left {
+            font-size: 30px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            color: black;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #right {
+            font-size: 30px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            color: black;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+
+        <ul class="clearFix boxImg">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+
+        <span id="left"></span>
+        <span id="right"></span>
+
+
+
+    </div>
+
+    <script>
+        const btnLeft = document.querySelector("#left")
+        const btnRight = document.querySelector("#right")
+        const boxImg = document.querySelector("ul")
+
+        function move(elem, attr, taget, timeCost) {
+            let currentValue = parseFloat(getComputedStyle(elem)[attr])
+            let currentSpeed = (taget - currentValue) / (timeCost / 40)
+
+            let timer = setInterval(
+                () => {
+                    currentValue += currentSpeed
+                    elem.style[attr] = currentValue + "px"
+                }, 40
+            )
+
+            setTimeout(
+                () => {
+                    clearTimeout(timer)
+
+                    elem.style[attr] = taget
+                }, timeCost
+
+            )
+        }
+
+
+
+
+
+        btnLeft.addEventListener(
+            "click",
+            (e) => {
+
+                move(
+                    boxImg,
+                    "left", parseFloat(getComputedStyle(boxImg).left) - 400,
+                    1000
+                )
+
+            }
+        )
+        btnRight.addEventListener(
+            "click",
+            (e) => {
+
+                move(
+                    boxImg,
+                    "left", parseFloat(getComputedStyle(boxImg).left) + 400,
+                    1000
+                )
+
+            }
+        )
+    </script>
+</body>
+
+</html>

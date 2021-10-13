@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #bigbox {
+            width: 800px;
+            height: 700px;
+            border: 1px solid black;
+            margin: 200px auto;
+            position: relative;
+        }
+
+        #smallbox {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bigbox">
+        <div id="smallbox"></div>
+    </div>
+
+    <script>
+        function fn1() {
+            var big = document.querySelector("#bigbox")
+            var small = document.querySelector("#smallbox")
+
+            var flow = false
+            small.addEventListener(
+                "mousedown",
+                function (e) {
+                    flow = true
+                    startLeft =  window.getComputedStyle(this).left
+                    startTop =  window.getComputedStyle(this).top
+                }
+            )
+
+            document.addEventListener(
+                "mouseup",
+                function (e) {
+                    flow = false
+                }
+            )
+
+            var bigL = big.offsetLeft
+            var bigT = big.offsetTop
+            console.log(bigL, bigT);
+            var bigH = big.clientHeight
+            var bigW = big.clientWidth
+
+            var smallH = small.clientHeight
+            var smallW = small.clientWidth
+
+            document.addEventListener(
+                "mousemove",
+                function (e) {
+                    if (!flow) {
+                        return
+                    }
+
+                    var computedLeft = e.pageX - bigL - smallW / 2
+                    var computedTop = e.pageY - bigT - smallH / 2
+
+                    small.style.left = computedLeft + "px"
+                    small.style.top = computedTop + "px"
+
+                    // console.log(small.style.left, small.style.top);
+
+                    switch (true) {
+                        case computedTop <= 0:
+
+                        case computedTop >= bigH - smallH:
+
+                        case computedLeft <= 0:
+
+                        case computedLeft >= bigW - smallW:
+
+                        // small.style.left = startLeft
+                        // small.style.top = startTop
+
+                        small.style.left = 10 + "px"
+                        small.style.top = 10 +"px"
+
+                            break;
+
+                        default:
+                            break;
+                    }
+
+
+                }
+            )
+        }
+        fn1()
+
+
+    </script>
+</body>
+
+</html>

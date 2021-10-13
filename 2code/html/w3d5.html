@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 600px;
+            height: 600px;
+            border: black 1px solid;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+
+    <script>
+        const box = document.querySelector("#box")
+
+        let timer = null
+
+        box.addEventListener(
+            "click",
+            () => {
+                setInterval(
+                    () => {
+                        if (timer) {
+                            clearTimeout(timer)
+                        }
+                        box.style.left = "500px"
+                        box.style.top = "300px"
+                        box.style.background = "red"
+                        box.style.width = "100px"
+                        box.style.height = "100px"
+                    }, 1000
+                )
+
+
+                let currentLeft = parseFloat(getComputedStyle(box).left)
+                let currentTop = parseFloat(getComputedStyle(box).top)
+                let currentWidth = parseFloat(getComputedStyle(box).width)
+                let currentHeight = parseFloat(getComputedStyle(box).height)
+
+                let currentLeftSpeed = 500 / 25
+                let currentTopSpeed = 300 / 25
+                let currentWidthSpeed = 600 / 25
+                let currentHeightSpeed = 600 / 25
+
+                timer = setInterval(() => {
+                    currentLeft += currentLeftSpeed
+                    currentTop += currentTopSpeed
+                    currentWidth -= currentWidthSpeed
+                    currentHeight -= currentHeightSpeed
+
+                    box.style.left = currentLeft + "px"
+                    box.style.top = currentTop + "px"
+                    box.style.width = currentWidth + "px"
+                    box.style.height = currentHeight + "px"
+                }, 40)
+            }
+        )
+    </script>
+</body>
+
+</html>

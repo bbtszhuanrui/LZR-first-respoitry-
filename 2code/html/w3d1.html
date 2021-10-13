@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box {
+            border: 1px solid black;
+            width: 600px;
+            height: 400px;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: space-between; */
+        }
+
+        ul {
+            width: 600px;
+            height: 100px;
+            display: flex;
+        }
+
+        ul>li {
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: chocolate;
+            color: white;
+        }
+
+        ol {
+            width: 600px;
+            height: 300px;
+            position: relative;
+
+
+        }
+
+        ol>li {
+            width: 600px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            color: blue;
+
+
+        }
+
+        ol>li.active {
+            display: flex;
+        }
+
+        ul>li.active {
+            background-color: blue;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+        <ol>
+            <li><img src="../images/1.webp" alt=""></li>
+            <li><img src="../images/2.webp" alt=""></li>
+            <li><img src="../images/3.webp" alt=""></li>
+        </ol>
+    </div>
+
+
+    <script>
+        var lis1 = document.querySelectorAll("ul>li")
+        var lis2 = document.querySelectorAll("ol>li")
+
+        // lis1,lis2 伪数组
+
+
+        lis1.forEach(
+            function (li,index) {
+                li.onclick = function () {  
+
+                    
+
+                    lis1.forEach(
+                        function (li1) {
+                            li1.classList.remove("active")
+                        }
+                    )
+
+                    this.classList.add("active")
+
+                    lis2.forEach(
+                        function(li2){
+                            li2.classList.remove("active")
+                        }
+                    )
+
+                    lis2[index].classList.add("active")
+                }
+            }
+        )
+    </script>
+</body>
+
+</html>

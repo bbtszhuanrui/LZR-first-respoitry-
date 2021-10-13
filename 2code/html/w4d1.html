@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age, gender) {
+            this.name = name
+            this.age = age
+            this.gender = gender
+        }
+
+        const p = new Person("张大喵", 18, "男")
+        console.log(p);
+        const p2 = new Person("二营长", 25, "男")
+        const p3 = new Person("孔二愣子", 31, "男")
+
+        function Pro(p) {
+            this.p = p
+            this.work = function () {
+                console.log("敲代码");
+            }
+        }
+        const pro = new Pro(p)
+        console.log(pro);
+        pro.work()
+
+        function Admin(p2) {
+            this.p2 = p2
+            this.work = function () {
+                console.log("管纪律");
+            }
+        }
+
+        const ad = new Admin(p2)
+
+        function Public(p3) {
+            this.p3 = p3
+            this.work = function () {
+                console.log("打交道");
+            }
+        }
+
+        const pr = new Public(p3)
+
+
+
+
+        function Conpany(pro) {
+            this.pro = pro
+            this.work = function () {
+                console.log(pro.p.name, pro.work, ad.p2.name, ad.work, pr.p3.name, pr.work);
+            }
+        }
+
+        const c = new Conpany(pro, ad, pr)
+        console.log(c);
+        c.work()
+    </script>
+</body>
+
+</html>

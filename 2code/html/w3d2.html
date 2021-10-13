@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .col {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <span>姓名：</span><input type="text" id="ipName">
+    <span>年龄：</span><input type="text" id="ipAge">
+    <span>性别：</span><input type="text" id="ipGender">
+    <button id="btn">添加到数组中</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>姓名 &nbsp;&nbsp;</td>
+                <td>年龄 &nbsp;&nbsp;</td>
+                <td>性别 &nbsp;&nbsp;</td>
+
+            </tr>
+        </thead>
+
+        <tbody id="kkk">
+
+        </tbody>
+    </table>
+
+
+    <script>
+        var table = document.getElementsByTagName("table")
+        var btn = document.querySelector("#btn")
+        // var name = document.querySelector("#ipName")
+        // var age = document.querySelector("#ipAge")
+        // var gender = document.querySelector("#ipGender")
+        var tds = document.querySelector("tbody>tr>td")
+        var kkk = document.querySelector("#kkk")
+        btn.addEventListener(
+            "click",
+            function (e) {
+                var ipNameValue = ipName.value
+                var ipAgeValue = ipAge.value
+                var ipGenderValue = ipGender.value
+                console.log(ipNameValue, ipAgeValue, ipGenderValue);
+
+                var tr = document.createElement("tr")
+                var td1 = document.createElement("td")
+                var td2 = document.createElement("td")
+                var td3 = document.createElement("td")
+                var td4 = document.createElement("td")
+
+                td1.innerText = `${ipNameValue}`
+                td2.innerText = `${ipAgeValue}`
+                td3.innerText = `${ipGenderValue}`
+                td4.innerText = "删除"
+                console.log(td1.innerText, td2.innerText, td3.innerText);
+                kkk = kkk.appendChild(tr)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                console.log(tr);
+
+                
+
+
+                
+
+
+            }
+
+        )
+
+        kkk.addEventListener(
+            "click",
+            function (e) {
+                
+                if (e.target.nodeName === "TD") {
+                   
+                }
+            }
+        )
+    </script>
+</body>
+
+</html>

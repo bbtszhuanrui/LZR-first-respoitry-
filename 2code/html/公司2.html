@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function Person(name, age, gender) {
+        //     this.name = name
+        //     this.age = age
+        //     this.gender = gender
+        // }
+
+        // Person.prototype.eat = function () {
+        //     console.log(`${this.name}:吃饭`);
+        // }
+        // Person.prototype.sleep = function () {
+        //     console.log(`${this.name}:睡觉`);
+        // }
+        // const p = new Person("张大喵", 18, "男")
+        // console.log(p);
+
+        class Person {
+            constructor(name, age, gender) {
+                this.name = name
+                this.age = age
+                this.gender = gender
+            }
+
+            eat() {
+                console.log(`${this.name}在吃饭`);
+            }
+            sleep() {
+                console.log(`${this.name}在睡觉`);
+            }
+        }
+
+        // function Staff(name, age, gender, skill) {
+        //     Person.call(this, name, age, gender)
+        //     this.skill = skill
+        // }
+
+        // Staff.prototype = new Person()
+        // Staff.prototype.work = function () {
+        //     
+        // }
+        class Staff extends Person {
+            constructor(name, age, gender,skill) {
+                super(name, age, gender)
+                this.skill = skill
+            }
+            work() {
+                console.log(`${this.name}正在${this.skill}`);
+            }
+        }
+
+        const p = new Staff("二营长",18,"男","开炮")
+        console.log(p);
+        p.work()
+
+
+        // function Propramer(name, age, gender) {
+        //     Staff.call(this, name, age, gender, "敲代码")
+        //     // this.name = name
+        //     // this.age = age
+        //     // this.gender = gender
+        //     // this.skill = skill
+
+        // }
+        // Propramer.prototype = new Staff()
+        // const p3 = new Propramer("张大喵", 18, "男")
+        // console.log(p3);
+        // p3.work()
+
+        class Propramer extends Staff {
+            constructor(name, age){
+                super(name, age,"男","敲代码")
+            }
+        }
+
+        const p2 = new Propramer("张大喵", 18)
+        console.log(p2);
+        p2.work()
+        p2.eat()
+
+        const p3 = new Propramer("赵刚",24)
+        p3.work()
+    </script>
+</body>
+
+</html>

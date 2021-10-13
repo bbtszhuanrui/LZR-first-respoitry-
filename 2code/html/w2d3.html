@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        var date1 = new Date(`August 31, 2021 15:00:00`)
+        var date2 = new Date(`2021-09-30T18:00:00`)
+        var date3 = new Date()
+        var date4 = new Date(2021,8,1,19,0,0)
+        console.log(date1,date2);
+        var date5 = new Date(`May 22, 2021 15:00:21`)
+        var date6 = new Date(`2021-03-21T04:00:22`)
+        var date7 = new Date(2012,2,4,5,2,09)
+        console.log(date5,date6,date7);
+        var date8 = new Date(16000000)
+        console.log(date8);
+    </script> -->
+
+    <!-- <script>
+        var date = new Date()
+        console.log(date.getFullYear());
+        console.log(date.getMonth());
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+        console.log(date.getDate());
+        console.log(date.getDay());
+
+    </script> -->
+
+    <script>
+        function getNum(a, b) {
+            return a + Math.round((b - a) * Math.random())
+        }
+        // console.log(getNum(0,255));
+
+        function fn2() {
+            var date = new Date()
+            var newdate = date.toLocaleString()
+            console.log(newdate);
+        }
+        // fn2()
+
+
+        function fn3(date1, date2) {
+
+            date1 = new Date(date1)
+            date2 = new Date(date2)
+
+            var date3 = date2 - date1
+
+
+            var date = parseInt(date3 / 86400000)
+            date3 = date3 % 86400000
+            // console.log(date3, date);
+
+
+            var hours = parseInt(date3 / 3600000)
+            date3 = date3 % 3600000
+
+            var minutes = parseInt(date3 / 60000)
+            date3 = date3 % 60000
+
+            var s = parseInt(date3 / 1000)
+
+
+            console.log(date + "天", hours + "小时", minutes + "分", s + "秒");
+
+        }
+        fn3('2021-09-30T18:00:10', '2022-09-30T15:21:32')
+    </script>
+</body>
+
+</html>

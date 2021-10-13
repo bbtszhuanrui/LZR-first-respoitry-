@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn1() {
+        //     var arr1 = [],
+        //         sum = 0,
+        //         arr2 = []
+
+        //     for (i = 0; i < 30; i++) {
+        //         arr1.push((i + 1) * 2)
+        //         sum += (i + 1) * 2
+
+        //         if ((i + 1) % 5 === 0) {
+        //             var pjz = sum / 5
+        //             arr2.push(pjz)
+        //             sum = 0
+        //         }
+        //     }
+
+        //     console.log(arr1, arr2);
+        // }
+        // fn1()
+
+        function fn2() {
+            var arr1 = []
+            var arr2 = []
+            var arr3 = []
+            var arr4 = []
+            var arr5 = []
+            var arr6 = []
+
+
+
+            for (i = 1; i <= 25; i++) {
+
+
+                if (i<=5) {
+                    arr2.push(i)
+                }else if (i>5&&i<=10) {
+                    arr3.push(i)
+                }else if (i>10&&i<=15) {
+                    arr4.push(i)
+                }else if (i>15&&i<=20) {
+                    arr5.push(i)
+                }else if (i>20&&i<=25) {
+                    arr6.push(i)
+                }
+
+
+            }
+            arr1.push(arr2,arr3,arr4,arr5,arr6)
+            console.log(arr1);
+        }
+        // fn2()
+
+    </script>
+</body>
+
+</html>
